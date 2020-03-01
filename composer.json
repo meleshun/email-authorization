@@ -1,0 +1,14 @@
+{
+    "name": "meleshun/email-authorization",
+    "type": "project",
+    "authors": [
+        {
+            "name": "meleshun",
+            "email": "meleshun@gmail.com"
+        }
+    ],
+    "require": {
+        "harvesthq/chosen": "^1.8",
+        "components/jquery": "^3.4"
+    }
+}
