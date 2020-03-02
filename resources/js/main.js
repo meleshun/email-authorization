@@ -163,7 +163,7 @@ function validation() {
 
 	// Select Validation
 	function isSelect(select_id) {
-		elem = $(select_id + '_chosen li.result-selected');
+		elem = $(select_id + '_chosen li.result-selected').not('.disabled-result');
 		(elem.length > 0) ? toggleValidStatus($(select_id), true) : toggleValidStatus($(select_id), false);
 	}
 
