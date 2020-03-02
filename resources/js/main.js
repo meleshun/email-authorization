@@ -21,6 +21,8 @@ $(document).ready(function() {
 			sendForm();
 		}	else {
 
+			// Update fields from the second tab
+			updateFields();
 			// Change cities
 			changeCities();
 			// Switch the form one step forward
@@ -32,13 +34,8 @@ $(document).ready(function() {
 	// Events for Back button
 	$('#back').click(function() {
 		field(-1);
-	});
-
-	// Refresh fields from the second tab when clicking on Region
-	$('#region').chosen().change(function() {
-		var fieldsTwo = $('.form__fields[data-step="2"] select');
-		fieldsTwo.prop('selectedIndex', 0);
-		fieldsTwo.trigger('chosen:updated');
+		// Update fields from the second tab
+		updateFields();
 	});
 
 	// Refresh the field of regions when clicking on Сity
@@ -51,6 +48,14 @@ $(document).ready(function() {
 		$(this).val($(this).val().replace(/[^а-яА-Яa-zA-Z ]/,''));
 	});
 });
+
+
+// Update fields from the second tab
+function updateFields() {
+	var fieldsTwo = $('.form__fields[data-step="2"] select');
+	fieldsTwo.prop('selectedIndex', 0);
+	fieldsTwo.trigger('chosen:updated');
+}
 
 
 // Form fields switcher
@@ -93,7 +98,7 @@ function changeCities() {
 			createOptions('#city', data);
 		},
 		error: function (xhr) {
-			console.log(xhr);
+			// console.log(xhr);
 		}
 	});
 }
@@ -110,7 +115,7 @@ function changeDistricts() {
 			createOptions('#district', data);
 		},
 		error: function (xhr) {
-			console.log(xhr);
+			// console.log(xhr);
 		}
 	});
 }
@@ -126,7 +131,7 @@ function sendForm() {
 			$('.main').html(data);
 		},
 		error: function (xhr) {
-			console.log(xhr);
+			// console.log(xhr);
 		}
 	});
 }
@@ -142,9 +147,8 @@ function createOptions(parent, data) {
 	parent.trigger("chosen:updated");
 }
 
-// Валидация формы
+// Validation
 function validation() {
-	console.log('Validation');
 
 	// Email Validation
 	function isEmail(elem) {
